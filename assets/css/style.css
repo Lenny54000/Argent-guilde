@@ -1,0 +1,260 @@
+/* =========================================================
+   Vanilla SMP — Trésorerie de guilde
+   Tokens : fond ardoise (cave), accent or (torche/ingot),
+   typographie condensée pour les titres, monospace pour les
+   montants (lecture façon registre comptable).
+   ========================================================= */
+:root {
+  --bg-base: #12151A;
+  --bg-surface: #1B2027;
+  --bg-surface-2: #232A33;
+  --border-hairline: #2C333D;
+  --text-primary: #EDEAE2;
+  --text-secondary: #8C94A0;
+  --accent-gold: #E3A33C;
+  --accent-gold-dim: #A97A2C;
+  --accent-emerald: #3FB88E;
+  --accent-redstone: #D9534F;
+
+  --font-display: 'Big Shoulders', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--accent-gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.is-hidden { display: none !important; }
+
+/* Navigation ------------------------------------------------------------ */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--border-hairline);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-nav .brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.site-nav .brand span { color: var(--accent-gold); }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; font-size: 0.92rem; }
+.nav-links a, .nav-links button {
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-links a:hover, .nav-links button:hover { color: var(--text-primary); text-decoration: underline; }
+
+main {
+  flex: 1;
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem;
+}
+
+/* Hero : le coffre de la guilde ------------------------------------------ */
+.hero { padding: 2rem 0 2.5rem; border-bottom: 1px solid var(--border-hairline); margin-bottom: 2.5rem; }
+.stat-total {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  line-height: 1;
+  color: var(--accent-gold);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.hero-meta { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin: 0.6rem 0 1.5rem; }
+
+/* Barre d'ingots — élément signature : un segment par membre, largeur
+   proportionnelle à sa part du coffre. */
+.ingot-bar { display: flex; height: 14px; gap: 2px; border-radius: 3px; overflow: hidden; background: var(--bg-surface-2); }
+.ingot { height: 100%; min-width: 2px; transition: opacity 0.15s ease; }
+.ingot:hover { opacity: 0.75; }
+
+section.panel { margin-bottom: 2.5rem; }
+section.panel h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 1rem;
+}
+
+.chart-wrap {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  padding: 1.25rem;
+  height: 280px;
+}
+
+/* Tableaux façon registre ------------------------------------------------ */
+table.ledger { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+table.ledger th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.6rem 0.5rem;
+}
+table.ledger td { padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--border-hairline); }
+table.ledger tr:last-child td { border-bottom: none; }
+table.ledger td.num, table.ledger th.num { font-family: var(--font-mono); text-align: right; }
+.positive { color: var(--accent-emerald); }
+.negative { color: var(--accent-redstone); }
+
+.empty-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--text-secondary);
+  border: 1px dashed var(--border-hairline);
+  border-radius: 8px;
+  margin-bottom: 2.5rem;
+}
+
+/* Cartes et formulaires --------------------------------------------------- */
+.card { background: var(--bg-surface); border: 1px solid var(--border-hairline); border-radius: 10px; padding: 1.75rem; }
+.field { margin-bottom: 1.25rem; }
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+.field input {
+  width: 100%;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-hairline);
+  border-radius: 6px;
+  padding: 0.7rem 0.85rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+.field input:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 1px; }
+
+.chips { display: flex; gap: 0.5rem; margin: 0.5rem 0 1.25rem; flex-wrap: wrap; }
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-primary);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+.chip:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 1px; }
+
+/* Boutons ------------------------------------------------------------------ */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  background: var(--accent-gold);
+  color: #1A1306;
+}
+.btn:hover { background: #f0ad4e; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+.btn-secondary { background: transparent; border: 1px solid var(--border-hairline); color: var(--text-primary); }
+.btn-secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+.btn-danger { background: var(--accent-redstone); color: #2A0E0C; }
+.btn-danger:hover { background: #e57672; }
+.btn-small { padding: 0.4rem 0.8rem; font-size: 0.82rem; }
+
+.message { font-size: 0.9rem; margin-top: 0.75rem; min-height: 1.2em; }
+.message.is-error { color: var(--accent-redstone); }
+.message.is-success { color: var(--accent-emerald); }
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(227, 163, 60, 0.15);
+  color: var(--accent-gold);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+}
+
+/* Page de connexion --------------------------------------------------------- */
+.auth-wrap { max-width: 420px; margin: 4rem auto; padding: 0 1.5rem; width: 100%; }
+.auth-wrap h1 { font-family: var(--font-display); font-size: 1.8rem; text-transform: uppercase; margin: 0 0 1.5rem; }
+.toggle-mode { background: none; border: none; color: var(--text-secondary); font-size: 0.88rem; cursor: pointer; margin-top: 1rem; text-decoration: underline; padding: 0; }
+
+/* Tableau admin : champs éditables en ligne ---------------------------------- */
+table.ledger input[type="text"], table.ledger input[type="number"] {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-hairline);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: 0.35rem 0.5rem;
+  width: 100%;
+}
+td.actions { display: flex; gap: 0.4rem; white-space: nowrap; }
+
+footer { text-align: center; font-size: 0.8rem; color: var(--text-secondary); padding: 1.5rem; border-top: 1px solid var(--border-hairline); }
+
+@media (max-width: 640px) {
+  main { padding: 1.5rem 1.25rem 3rem; }
+  .site-nav { padding: 1rem 1.25rem; }
+  table.ledger { font-size: 0.85rem; }
+  .stat-total { font-size: clamp(2.4rem, 14vw, 3.5rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

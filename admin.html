@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin — Vanilla SMP Trésorerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="site-nav">
+  <div class="brand">Vanilla<span>SMP</span> · Trésorerie</div>
+  <nav class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="compte.html" data-nav="compte">Mon compte</a>
+    <a href="admin.html" data-nav="admin">Admin</a>
+    <a href="login.html" data-nav="login" class="is-hidden">Connexion</a>
+    <button data-nav="logout">Se déconnecter</button>
+  </nav>
+</header>
+
+<main>
+  <p class="eyebrow">Administration</p>
+  <p class="message" data-message></p>
+  <table class="ledger">
+    <thead><tr><th>Pseudo</th><th class="num">Montant</th><th>Statut</th><th>Actions</th></tr></thead>
+    <tbody data-admin-body></tbody>
+  </table>
+
+  <div class="card" style="margin-top:2.5rem;">
+    <p style="margin:0; color:var(--text-secondary); font-size:0.9rem;">
+      Pour donner les droits admin à quelqu'un, c'est volontairement impossible depuis le site (sécurité).
+      Passe par l'éditeur SQL de Supabase — voir le README du dépôt pour la commande exacte.
+    </p>
+  </div>
+</main>
+
+<script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>

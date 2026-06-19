@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mon compte — Vanilla SMP Trésorerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="site-nav">
+  <div class="brand">Vanilla<span>SMP</span> · Trésorerie</div>
+  <nav class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="compte.html" data-nav="compte">Mon compte</a>
+    <a href="admin.html" data-nav="admin" class="is-hidden">Admin</a>
+    <a href="login.html" data-nav="login" class="is-hidden">Connexion</a>
+    <button data-nav="logout">Se déconnecter</button>
+  </nav>
+</header>
+
+<main>
+  <p class="eyebrow">Ma participation</p>
+  <div class="card" style="max-width:480px;">
+    <div class="field">
+      <label for="pseudo">Pseudo public</label>
+      <input type="text" id="pseudo" data-pseudo-input maxlength="24" />
+    </div>
+    <div class="field">
+      <label for="montant">Montant que je suis prêt à mettre (€)</label>
+      <input type="number" id="montant" min="0" step="0.01" data-montant-input />
+    </div>
+    <div class="chips">
+      <button type="button" class="chip" data-quick-add="5">+5 €</button>
+      <button type="button" class="chip" data-quick-add="10">+10 €</button>
+      <button type="button" class="chip" data-quick-add="20">+20 €</button>
+      <button type="button" class="chip" data-quick-add="-10">−10 €</button>
+    </div>
+    <button class="btn" data-save-btn>Enregistrer</button>
+    <p class="message" data-message></p>
+  </div>
+
+  <section class="panel" style="margin-top:2.5rem;">
+    <h2>Mon historique</h2>
+    <div class="empty-state is-hidden" data-historique-empty>Pas encore de changement enregistré.</div>
+    <table class="ledger">
+      <thead><tr><th>Date</th><th class="num">Changement</th><th class="num">Différence</th></tr></thead>
+      <tbody data-historique-body></tbody>
+    </table>
+  </section>
+</main>
+
+<script type="module" src="assets/js/compte.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Connexion — Vanilla SMP Trésorerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="site-nav">
+  <div class="brand">Vanilla<span>SMP</span> · Trésorerie</div>
+  <nav class="nav-links">
+    <a href="index.html">Accueil</a>
+  </nav>
+</header>
+
+<main class="auth-wrap">
+  <h1 data-form-title>Se connecter</h1>
+  <form data-auth-form class="card">
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" data-email required autocomplete="email" />
+    </div>
+    <div class="field">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" data-password required minlength="6" />
+    </div>
+    <button type="submit" class="btn" data-submit style="width:100%;">Se connecter</button>
+    <p class="message" data-message></p>
+  </form>
+  <button class="toggle-mode" data-toggle-mode>Pas encore de compte ? Crée-en un</button>
+</main>
+
+<script type="module" src="assets/js/login.js"></script>
+</body>
+</html>

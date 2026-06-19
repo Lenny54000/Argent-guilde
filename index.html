@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vanilla SMP — Trésorerie de guilde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="site-nav">
+  <div class="brand">Vanilla<span>SMP</span> · Trésorerie</div>
+  <nav class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="compte.html" data-nav="compte" class="is-hidden">Mon compte</a>
+    <a href="admin.html" data-nav="admin" class="is-hidden">Admin</a>
+    <a href="login.html" data-nav="login">Connexion</a>
+    <button data-nav="logout" class="is-hidden">Se déconnecter</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Le coffre de la guilde</p>
+    <p class="stat-total" data-total>—</p>
+    <p class="hero-meta" data-meta>Chargement…</p>
+    <div class="ingot-bar" data-ingot-bar></div>
+  </section>
+
+  <div class="empty-state is-hidden" data-empty-state>
+    Personne n'a encore déclaré de participation.<br />
+    <a href="login.html">Connecte-toi</a> pour être le premier à remplir le coffre.
+  </div>
+
+  <section class="panel" data-evolution-panel>
+    <h2>Évolution</h2>
+    <div class="chart-wrap">
+      <canvas id="evolution-chart"></canvas>
+    </div>
+  </section>
+
+  <section class="panel" data-members-panel>
+    <h2>Membres</h2>
+    <table class="ledger">
+      <thead><tr><th>Pseudo</th><th class="num">Montant</th></tr></thead>
+      <tbody data-members-body></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Vanilla SMP — semi-anarchie, comptes crackés acceptés.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script type="module" src="assets/js/dashboard.js"></script>
+</body>
+</html>
